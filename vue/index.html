@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+        <link rel="stylesheet" href="./style.css">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <title>Quiz App Sample</title>
+	</head>
+	<body>
+		<h1>Quiz Time!</h1>
+
+        <main id="app">
+            <div v-if="currentQuestion < quiz.length" class="qcard">
+                <h2>{{ quiz[currentQuestion].q }}</h2>
+
+                <div class="choices">
+                    <button v-for="a in quiz[currentQuestion].c" @click="answer(a)">{{ a }}</button>
+                </div>
+            </div>
+            <div v-else class="result">
+                <div>You got</div>
+                <h2>{{correctCount}} out of {{quiz.length}}</h2>
+                <div>correct answers!</div>
+                <div class="buttons">
+                    <button @click="reset">Try Again</button>
+                </div>
+            </div>
+        </main>
+
+        <div class="small">
+            Questions courtesy of ChatGPT.<br>
+            Sample application for BSCS I Intermediate Programming class.<br>
+            &copy; 2024 FCAT CCS / K. Buan
+        </div>
+
+        <script src="./app.js"></script>
+	</body>
+</html>
